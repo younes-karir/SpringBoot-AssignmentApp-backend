@@ -13,7 +13,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "assignments")
 public class Assignment {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer assignmentId;
+    private Integer id;
+    private String GithubUrl;
+    private String Branch;
+    private String CodeReviewVideoUrl;
+    
+    @Enumerated(EnumType.STRING)
+    private Status status;
+    
+    @ManyToOne(optional = false)
+    private User user;
+    
 }
