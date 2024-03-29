@@ -7,6 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,26 +20,16 @@ import java.util.List;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer userId;
+    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    private LocalDate date;
+    private LocalDate cohortsDate;
     
     @Enumerated(EnumType.STRING)
     private Role role;
     
-    
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(
-            name = "assignmentId",
-            referencedColumnName = "assignmentId"
-    )
-    private List<Assignment> assignments;
-    
-    
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -60,9 +51,7 @@ public class User implements UserDetails {
     }
 
     @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+    public boolean isAccountNonLocked() {return true;}
 
     @Override
     public boolean isCredentialsNonExpired() {
