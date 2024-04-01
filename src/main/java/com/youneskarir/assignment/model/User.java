@@ -18,9 +18,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
+
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "user_sequence",strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "user_sequence",allocationSize = 1,sequenceName = "user_sequence")
     private Integer id;
     private String firstName;
     private String lastName;
