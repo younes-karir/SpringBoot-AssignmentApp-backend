@@ -1,6 +1,7 @@
 package com.youneskarir.assignment.advice;
 
 
+import com.youneskarir.assignment.advice.exception.BadRequestException;
 import com.youneskarir.assignment.advice.exception.ElementNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,4 +30,8 @@ public class ExceptionHandle {
     public ResponseEntity<Object> handleElementNotFoundException(Exception exception){        
         return new ResponseEntity<>(exception.getMessage(),HttpStatus.NOT_FOUND);
     }
+    
+    //------ custom
+    
+    
 }
