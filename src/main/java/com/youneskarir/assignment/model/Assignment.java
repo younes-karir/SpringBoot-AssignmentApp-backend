@@ -15,7 +15,11 @@ import lombok.Setter;
 public class Assignment {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "assignment_sequence")
+    @SequenceGenerator(
+            name = "assignment_sequence",
+            sequenceName = "assignment_sequence",
+            allocationSize = 1)
     private Integer id;
     private String GithubUrl;
     private String Branch;
