@@ -1,6 +1,8 @@
 package com.youneskarir.assignment.config;
 
 
+import com.youneskarir.assignment.advice.exception.BadRequestException;
+import com.youneskarir.assignment.advice.exception.ElementNotFoundException;
 import com.youneskarir.assignment.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
