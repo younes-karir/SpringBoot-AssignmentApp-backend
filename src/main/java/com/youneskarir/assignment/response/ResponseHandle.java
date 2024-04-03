@@ -16,4 +16,13 @@ public class ResponseHandle {
         if(object!=null) data.put("data",object);
         return new ResponseEntity<Object>(data,status);
     }
+
+    public static ResponseEntity<Object> buildToken(String message, HttpStatus status, Object object)
+    {
+        Map<String,Object> data =  new HashMap<>();
+        data.put("message",message);
+        data.put("status",status);
+        if(object!=null) data.put("token",object);
+        return new ResponseEntity<Object>(data,status);
+    }
 }
